@@ -101,8 +101,9 @@ class Controller extends Writer
     /*
      * Set the RouteName
      */
+
     private function setRouteName($routeName,$type,$entity) {
-//        Path to the routes.php
+//      Path to the routes.php
         $route_path = app_path('Http/routes.php');
 
 //        Open routes.php

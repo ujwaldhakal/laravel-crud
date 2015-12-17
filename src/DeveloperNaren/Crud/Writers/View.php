@@ -108,11 +108,11 @@ class View extends Writer {
 
         $content .= "<tbody>" . PHP_EOL;
 
-        $content .= '@foreach( ' . str_plural($this->modelVar) . ' as ' . $this->modelVar . ')' . PHP_EOL;
+        $content .= '@foreach( ' . $this->modelVar . ' as ' . str_plural($this->modelVar) . ')' . PHP_EOL;
 
         foreach ($this->fieldArr as $fieldName => $value) {
 
-            $content .= '<td>{!! ' . $this->modelVar . '->' . $fieldName . ' !!}</td>' . PHP_EOL;
+            $content .= '<td>{!! ' . str_plural($this->modelVar) . '->' . $fieldName . ' !!}</td>' . PHP_EOL;
         }
 
         $content .= '@endforeach' . PHP_EOL;

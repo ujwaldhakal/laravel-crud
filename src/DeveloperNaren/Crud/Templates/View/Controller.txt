@@ -17,7 +17,7 @@ class %%ModelName%%Controller extends %%BaseController%% {
 
     function index() {
 
-		$this->data['%%ModelVarPlural%%'] = %%ModelName%%::paginate(15);
+		$this->data['%%ModelName%%'] = %%ModelName%%::paginate(15);
 		return view( '%%CrudSlug%%.list', $this->data);
 
     }
