@@ -22,7 +22,7 @@ class %%ModelName%%Controller extends %%BaseController%% {
 
     }
 
-    function postAdd() {
+    function getAdd() {
 
         $fieldArr = with(new %%ModelName%%)->getFillable();
         $this->data = InputHelper::setFields($fieldArr, [], $this->data, Input::old());

@@ -7,7 +7,12 @@
         {
             "name": "Naren",
             "email": "developer.naren@gmail.com"
-        }
+        },
+
+      {
+            "name" : "Ujwal",
+            "email" : "kevin.ujwal@gmail.com"
+      }
     ],
     "autoload": {
         "psr-4": {

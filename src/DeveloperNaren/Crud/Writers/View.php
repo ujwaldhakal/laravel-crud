@@ -2,6 +2,7 @@
 
 namespace DeveloperNaren\Crud\Writers;
 use Illuminate\Support\Facades\Config;
+use File;
 
 /**
  * Writes the view file
@@ -52,6 +53,9 @@ class View extends Writer {
 
 
 
+
+
+
     /**
      * @param $entity
      * @param $fieldsString
@@ -66,6 +70,7 @@ class View extends Writer {
         $this->setTableName($entity);
         $this->setModelVar();
 
+
         //setting templates for everything, I hate doing things like this.
         //ToDo someone create an array loop over the methods please
         $this->setCheckBoxDivTemplate();
@@ -79,9 +84,13 @@ class View extends Writer {
         $this->setSelectTemplate();
         $this->setViewTarget();
 
+
         //we have a table in the list file, write that thing
         $this->renderTableBody();
         $this->renderViewInputs();
+        $this->copyDirectory();
+
+//        $this->allCrudEmptyFiles();
 
 
     }
@@ -221,6 +230,13 @@ class View extends Writer {
 
     }
 
+
+//    function allCrudEmptyFiles(){
+//
+//        $target = $this->viewTarget . '/' . str_slug($this->modelName) . "/show.blade.php";
+//        $template = '/vendor/developernaren/laravel-crud/src/DeveloperNaren/Crud/Templates/Show.txt';
+//        $this->write($template, $contentKeyArr = null, $target);
+//    }
     /**
      * Renders the form
      */
@@ -423,6 +439,32 @@ class View extends Writer {
     }
 
 
+
+    /*
+     * Setting up necessary files in the view creation
+     *
+     */
+
+      public function copyDirectory() {
+
+          /*
+           * For assets folder
+           */
+        $sourceDir = base_path('/vendor/developernaren/laravel-crud/src/DeveloperNaren/Crud/Templates/View/assets');
+        $destinationDir = base_path('public/');
+
+        File::copyDirectory($sourceDir, $destinationDir);
+
+          /*
+           * For layout folder
+           */
+
+          $sourceDir1 = base_path('/vendor/developernaren/laravel-crud/src/DeveloperNaren/Crud/Templates/View/layouts');
+          $destinationDir1 = base_path('resources/views/');
+
+          File::copyDirectory($sourceDir1, $destinationDir1);
+
+    }
 
 
 

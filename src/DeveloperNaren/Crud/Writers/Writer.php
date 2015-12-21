@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use Illuminate\Container\Container;
 
+
 /**
  * Class Writer
  * @package DeveloperNaren\Crud\Writers

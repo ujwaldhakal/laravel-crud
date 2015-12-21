@@ -106,15 +106,19 @@ class Controller extends Writer
 //      Path to the routes.php
         $route_path = app_path('Http/routes.php');
 
+//        capital letter entity or controller name
+
+        $controller_name = ucfirst($entity);
+
 //        Open routes.php
         $open_route_path = fopen($route_path,'a');
 
         if($type == 'i') {
-            $append_code = 'Route::controller('."$routeName".','."$entity".');';
+            $append_code = 'Route::controller('."$routeName".','."$controller_name".'Controller);';
 
         } elseif($type == 'e') {
 
-            $append_code = 'Route::resource('."$routeName".','."$entity".');';
+            $append_code = 'Route::resource('."$routeName".','."$controller_name".'Controller);';
         }
 
 //        writing to the routes.php file
