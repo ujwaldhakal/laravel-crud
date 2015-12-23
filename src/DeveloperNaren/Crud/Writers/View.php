@@ -86,8 +86,9 @@ class View extends Writer {
 
 
         //we have a table in the list file, write that thing
-        $this->renderTableBody();
+
         $this->renderViewInputs();
+        $this->renderTableBody();
         $this->copyDirectory();
 
 //        $this->allCrudEmptyFiles();
@@ -129,13 +130,15 @@ class View extends Writer {
         $content .= "</tbody>" . PHP_EOL;
 
         $this->tableContent = $content;
+        $this->renderForm();
 
         //writing the list file
         //ToDo Needs to come from template file
         $target = $this->viewTarget . '/' . str_slug($this->modelName) . "/list.blade.php";
         $template = '/vendor/developernaren/laravel-crud/src/DeveloperNaren/Crud/Templates/ListView.txt';
-        $contentKeyArr = get_object_vars($this);
-        
+        $contentKeyArr['rendertable'] = get_object_vars($this);
+        $contentKeyArr['form'] = $this->completeForm ;
+
         $this->write($template, $contentKeyArr, $target);
 
     }

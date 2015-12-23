@@ -9,7 +9,7 @@
                 <div class="icons">
                     <i class="fa fa-table"></i>
                 </div>
-                <h5>Product List</h5>
+                <h2 style="text-align:center">Product List</h2
 
                       <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
                                     Add New

@@ -154,7 +154,13 @@ class Writer
      */
     function write( $file, $contentKeyArr, $target ) {
 
-        $newContent = $this->replaceVarNReturnContent( $file, $contentKeyArr );
+        if(is_array($contentKeyArr)):
+            foreach($contentKeyArr as $key=>$value ):
+        $newContent = $this->replaceVarNReturnContent( $file, $value );
+                endforeach;
+       endif;
+            $newContent = $this->replaceVarNReturnContent( $file, $contentKeyArr );
+
         $this->writeDirectory( $target );
         $this->openAndWriteActualFile( $newContent, $target );
 
